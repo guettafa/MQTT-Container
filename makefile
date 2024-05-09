@@ -4,15 +4,16 @@ F_BROKER=./src/broker.c
 
 L_MOSQUITTO=-lmosquitto
 
-F_OUTP
+F_OUTPUT=-o broker
 
 CC=-std=c11
+
+COMPILE=gcc $(CC) $(F_MAIN) $(F_HELPER) $(F_BROKER) $(L_MOSQUITTO) 
 
 all:release
 
 release:
-	gcc $(CC) $(F_MAIN) $(F_HELPER) $(F_BROKER) $(L_MOSQUITTO) 
+	$(COMPILE)
 
 debug:
-	gcc $(CC) $(F_MAIN) $(F_HELPER) $(F_BROKER) $(L_MOSQUITTO) -g
-
+	$(COMPILE) -g	
