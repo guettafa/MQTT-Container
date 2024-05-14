@@ -10,6 +10,14 @@ void on_publish(struct mosquitto *mosq, void *userdata, int mid) {
     printf("Message publié.\n");
 }
 
+void on_message(struct mosquitto *mosq, void *userdata, const struct mosquitto_message *message) {
+
+    
+    printf("Message Reçu : (%s) %s\n",message->topic, (char *)message->payload);
+}
+
+int createTeamStr(bool onOrOff);
+
 int main() {
     struct mosquitto *mosq = NULL;
     int rc;
@@ -23,6 +31,7 @@ int main() {
     }
 
     mosquitto_connect_callback_set(mosq, on_connect);
+    mosquitto_message_callback_set(mosq, on_message);
     mosquitto_publish_callback_set(mosq, on_publish);
 
     rc = mosquitto_connect(mosq, HOST, PORT, 60);
@@ -31,7 +40,10 @@ int main() {
         return 1;
     }
 
-    const char* MQTT_MESSAGE = "hello";
+    // Exemple
+    const char* MQTT_MESSAGE = "1";
+
+    // Envoie message 
     rc = mosquitto_publish(mosq, NULL, TOPIC, strlen(MQTT_MESSAGE), MQTT_MESSAGE, QOS, false);
     if (rc != MOSQ_ERR_SUCCESS) {
         fprintf(stderr, "Failed to publish message: %s\n", mosquitto_strerror(rc));
@@ -43,4 +55,10 @@ int main() {
     mosquitto_lib_cleanup();
 
     return 0;
+}
+
+int createTeamStr(bool onOrOff) 
+{
+    char* teamStr; asprintf(&teamStr,"4:%d", onOrOff);
+    printf("%s",teamStr);
 }

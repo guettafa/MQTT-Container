@@ -10,4 +10,4 @@
 #define QOS 1
 #define HOST "mqttbroker.lan"
 
-void tranformToState(uint8_t onOrOff);
+int createTeamStr(bool onOrOff);
