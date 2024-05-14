@@ -1,7 +1,13 @@
 #pragma once
 
-#include "helper.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "mosquitto.h"
 
-void on_connect(struct mosquitto *mosq, void *userdata, int result);
-void on_message(struct mosquitto *mosq, void *userdata, const struct mosquitto_message *message); 
+#define PORT 1883
+#define TOPIC "final"
+#define QOS 1
+#define HOST "mqttbroker.lan"
 
+void tranformToState(uint8_t onOrOff);
