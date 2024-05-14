@@ -10,4 +10,4 @@
 #define QOS 1
 #define HOST "mqttbroker.lan"
 
-int createTeamStr(bool onOrOff);
+char* createTeamStr(bool onOrOff);

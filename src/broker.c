@@ -11,16 +11,12 @@ void on_publish(struct mosquitto *mosq, void *userdata, int mid) {
 }
 
 void on_message(struct mosquitto *mosq, void *userdata, const struct mosquitto_message *message) {
-
-    
     printf("Message Reçu : (%s) %s\n",message->topic, (char *)message->payload);
 }
 
-int createTeamStr(bool onOrOff);
-
 int main() {
     struct mosquitto *mosq = NULL;
-    int rc;
+    int rc, otherrc;
 
     mosquitto_lib_init();
 
@@ -41,10 +37,10 @@ int main() {
     }
 
     // Exemple
-    const char* MQTT_MESSAGE = "1";
+    const char* MQTT_MESSAGE = createTeamStr(1);
 
     // Envoie message 
-    rc = mosquitto_publish(mosq, NULL, TOPIC, strlen(MQTT_MESSAGE), MQTT_MESSAGE, QOS, false);
+    otherrc = mosquitto_publish(mosq, NULL, TOPIC, strlen(MQTT_MESSAGE), MQTT_MESSAGE, QOS, false);
     if (rc != MOSQ_ERR_SUCCESS) {
         fprintf(stderr, "Failed to publish message: %s\n", mosquitto_strerror(rc));
     }
@@ -57,8 +53,11 @@ int main() {
     return 0;
 }
 
-int createTeamStr(bool onOrOff) 
+char* createTeamStr(bool onOrOff) 
 {
-    char* teamStr; asprintf(&teamStr,"4:%d", onOrOff);
-    printf("%s",teamStr);
+    char* state = "off";
+    if (onOrOff) state = "on";
+    
+    char* teamStr; asprintf(&teamStr,"4:%s", state);
+    return teamStr;
 }
