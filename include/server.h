@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <pthread.h>
 #include <unistd.h>
 
 #define BUFFER_SIZE 1024

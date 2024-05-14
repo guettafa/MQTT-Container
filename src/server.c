@@ -1,6 +1,5 @@
 #include <server.h>
 
-
 int main() {
     int socket_local;
     struct sockaddr_in adr_local, adr_dist;
@@ -22,9 +21,13 @@ int main() {
 
         len = sizeof(adr_dist); 
         // Stocker le message reçu dans n
+        
+        // Retrieve message
         n = recvfrom(socket_local, (char *)buffer, BUFFER_SIZE, MSG_WAITALL, (struct sockaddr *)&adr_dist, &len);
         buffer[n] = '\0';
 
+        // Send message to a port 
+        
         // Afficher
         printf("Reçu: %s", buffer);
         fflush(stdout); 

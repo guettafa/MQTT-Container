@@ -8,6 +8,6 @@
 #define PORT 1883
 #define TOPIC "final"
 #define QOS 1
-#define HOST "mqttbroker.lan"
+#define HOST ""
 
 char* createTeamStr(bool onOrOff);
