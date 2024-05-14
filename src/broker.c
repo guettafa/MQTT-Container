@@ -25,6 +25,8 @@ int main() {
         fprintf(stderr, "Erreur: création de l'instance mosquitto.\n");
         return 1;
     }
+    
+    mosquitto_username_pw_set(mosq,getenv("MOSQUITTO_USERNAME"),getenv("MOSQUITTO_PASSWORD"));
 
     mosquitto_connect_callback_set(mosq, on_connect);
     mosquitto_message_callback_set(mosq, on_message);
