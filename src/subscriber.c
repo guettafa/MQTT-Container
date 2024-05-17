@@ -1,16 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <mosquitto.h>
 
-#define MQTT_BROKER_HOST "10.10.0.188"
-#define MQTT_PORT 1883
-#define MQTT_TOPIC "final"
-#define MQTT_QOS 1
+#include "subscriber.h"
 
 void on_connect(struct mosquitto *mosq, void *userdata, int result) {
     if (result == 0) {
-        mosquitto_subscribe(mosq, NULL, MQTT_TOPIC, MQTT_QOS);
+        mosquitto_subscribe(mosq, NULL, TOPIC, QOS);
     } else {
         fprintf(stderr, "Erreur: connexion broker MQTT.\n");
     }
@@ -35,7 +28,7 @@ int main() {
     mosquitto_connect_callback_set(mosq, on_connect);
     mosquitto_message_callback_set(mosq, on_message);
 
-    rc = mosquitto_connect(mosq, MQTT_BROKER_HOST, MQTT_PORT, 60);
+    rc = mosquitto_connect(mosq, MQTT_BROKER_HOST, PORT, 60);
     if (rc != MOSQ_ERR_SUCCESS) {
         fprintf(stderr, "Connexion impossible au broker: %s\n", mosquitto_strerror(rc));
         return 1;

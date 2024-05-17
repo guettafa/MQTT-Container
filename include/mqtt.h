@@ -1,5 +1,3 @@
-#pragma once
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -7,7 +5,5 @@
 
 #define PORT 1883
 #define TOPIC "final"
-#define QOS 1
-#define HOST ""
-
-char* createTeamStr(bool onOrOff);
+#define QOS 0
+#define MQTT_BROKER_HOST "mqttbroker.lan"
