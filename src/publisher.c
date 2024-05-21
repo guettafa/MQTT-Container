@@ -14,6 +14,10 @@ int main() {
     struct mosquitto *mosq = NULL;
     int rc;
 
+    char* ca = "/root/projetfinal/blinking-matrix/certificate/final-ca.crt";
+    char* cert = "/root/projetfinal/blinking-matrix/certificate/arslane.crt";
+    char* key = "/root/projetfinal/blinking-matrix/certificate/arslane.key";
+
     mosquitto_lib_init();
 
     mosq = mosquitto_new(NULL, true, NULL);
@@ -22,7 +26,8 @@ int main() {
         return 1;
     }
 
-    mosquitto_username_pw_set(mosq,getenv("MOSQUITTO_USERNAME"),getenv("MOSQUITTO_PASSWORD"));
+    mosquitto_username_pw_set(mosq,"minux","0407");
+    mosquitto_tls_set(mosq,ca,NULL,cert,key,NULL);
 
     mosquitto_connect_callback_set(mosq, on_connect);
     mosquitto_publish_callback_set(mosq, on_publish);
