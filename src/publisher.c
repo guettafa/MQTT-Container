@@ -32,7 +32,8 @@ int main() {
     mosquitto_connect_callback_set(mosq, on_connect);
     mosquitto_publish_callback_set(mosq, on_publish);
 
-    rc = mosquitto_connect(mosq, MQTT_BROKER_HOST, PORT, 60);
+    rc = mosquitto_connect(mosq, MQTT_BROKER_HOST, PORT_MQTT, 60);
+
     if (rc != MOSQ_ERR_SUCCESS) {
         fprintf(stderr, "Connexion impossible au broker: %s\n", mosquitto_strerror(rc));
         return 1;

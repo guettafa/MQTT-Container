@@ -1,4 +1,12 @@
-#include <server.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+#define PORT 8888
+#define BUFFER_SIZE 1024
 
 int main() {
     int socket_local;
@@ -21,13 +29,9 @@ int main() {
 
         len = sizeof(adr_dist); 
         // Stocker le message reçu dans n
-        
-        // Retrieve message
         n = recvfrom(socket_local, (char *)buffer, BUFFER_SIZE, MSG_WAITALL, (struct sockaddr *)&adr_dist, &len);
         buffer[n] = '\0';
 
-        // Send message to a port 
-        
         // Afficher
         printf("Reçu: %s", buffer);
         fflush(stdout); 
