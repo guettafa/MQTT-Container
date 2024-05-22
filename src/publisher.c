@@ -32,6 +32,9 @@ int main() {
     mosquitto_connect_callback_set(mosq, on_connect);
     mosquitto_publish_callback_set(mosq, on_publish);
 
+    // PEUT FAIRE EN 1 FICHIER MAIS DOIT ASSURER QU'ILS SOIENT DANS 2 PROCESS DIFFERENTS AVEC LES METHODES DE CALLBAKCKS
+
+
     rc = mosquitto_connect(mosq, MQTT_BROKER_HOST, PORT_MQTT, 60);
 
     if (rc != MOSQ_ERR_SUCCESS) {

@@ -15,7 +15,7 @@ COMPILE_MOSQUITTO=gcc $(CC) $(L_MOSQUITTO) -I ./include
 COMPILE=gcc $(CC) -I ./include
 
 clean:
-	rm -rf build/subscriber build/publisher build/server build/client
+	rm -rf build/subscriber build/publisher build/server build/client a.out
 
 publisher:
 	$(COMPILE_MOSQUITTO) $(F_PUBLISHER) $(D_GNU_SOURCE) -o build/publisher
@@ -24,7 +24,7 @@ subscriber:
 	$(COMPILE_MOSQUITTO) $(F_SUBSCRIBER) -o build/subscriber
 
 server:
-	$(COMPILE) $(F_SERVER) -o build/server 
+	$(COMPILE) -g $(F_SERVER) -lpthread  
 
 client:
-	$(COMPILE) -g $(F_CLIENT) -lpthread
+	$(COMPILE) $(F_CLIENT) -o build/client
