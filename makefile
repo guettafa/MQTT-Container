@@ -11,21 +11,20 @@ GNU_SOURCE=-D_GNU_SOURCE
 
 CC=-std=gnu99
 
-clean:
-	rm -rf build/subscriber
-	rm -rf build/publisher
-	rm -rf build/server
-	rm -rf build/client
+COMPILE_MOSQUITTO=gcc $(CC) $(L_MOSQUITTO) -I ./include 
+COMPILE=gcc $(CC) -I ./include
 
+clean:
+	rm -rf build/subscriber build/publisher build/server build/client
 
 publisher:
-	gcc $(CC) $(F_PUBLISHER) -o build/publisher $(L_MOSQUITTO) $(D_GNU_SOURCE) -I ./include 
+	$(COMPILE_MOSQUITTO) $(F_PUBLISHER) $(D_GNU_SOURCE) -o build/publisher
 
 subscriber:
-	gcc $(CC) $(F_SUBSCRIBER) -o build/subscriber $(L_MOSQUITTO) -I ./include 
+	$(COMPILE_MOSQUITTO) $(F_SUBSCRIBER) -o build/subscriber
 
 server:
-	gcc $(CC) $(F_SERVER) -o build/server -I ./include 
+	$(COMPILE) $(F_SERVER) -o build/server 
 
 client:
-	gcc $(CC) $(F_CLIENT) -o build/client -I ./include 
+	$(COMPILE) -g $(F_CLIENT) -lpthread
