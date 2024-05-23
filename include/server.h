@@ -13,7 +13,6 @@
 #define DEST_IP "mqttbroker.lan"
 #define BUFFER_SIZE 1024
 
-
 /// @brief Structure to handle the buffer received by the receiver 
 ///        ( it is used in the a separated thread too)
 typedef 
