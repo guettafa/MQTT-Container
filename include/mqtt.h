@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -7,3 +9,6 @@
 #define TOPIC "final"
 #define QOS 1
 #define MQTT_BROKER_HOST "mqttbroker.lan"
+#define LOCALHOST "127.0.0.1"
+
+char* createTeamStr(bool onOrOff);

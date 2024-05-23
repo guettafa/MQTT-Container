@@ -11,13 +11,12 @@ void *receiver(void *args) {
         
         // Stocker le message reçu dans n
         n = recvfrom(rs->socketReceiver, (char *)rs->buffer, BUFFER_SIZE, MSG_WAITALL, (struct sockaddr *)&rs->addrs_dist, &len);
-        
-        // Afficher
-        //printf("%s",rs->buffer);
+
         fflush(stdout); 
     }
     pthread_exit(NULL);
 }
+
 
 int main() {
 
@@ -51,7 +50,7 @@ int main() {
 
     // ACT ------
 
-    // Ready to receve
+    // Ready to receive
     bind(sock, (const struct sockaddr *)&local_addr, sizeof(local_addr));
 
     // Prepare the struct
@@ -67,6 +66,8 @@ int main() {
     }
 
     while (1) {
+
+        // Change this to make that message is sent only the the message has changded
         char* message = "";
         message = (char*) rs->buffer;
         if (strcmp(message,""))
