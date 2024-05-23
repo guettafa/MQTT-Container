@@ -10,5 +10,3 @@
 #define QOS 1
 #define MQTT_BROKER_HOST "mqttbroker.lan"
 #define LOCALHOST "127.0.0.1"
-
-char* createTeamStr(bool onOrOff);

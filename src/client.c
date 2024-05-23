@@ -8,7 +8,7 @@
 
 #define PORT 8888
 #define DEST_IP "127.0.0.1"
-#define MESSAGE "hello!\n"
+#define MESSAGE "1"
 
 int main() {
     int sock = 0;

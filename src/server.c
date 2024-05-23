@@ -17,7 +17,6 @@ void *receiver(void *args) {
     pthread_exit(NULL);
 }
 
-
 int main() {
 
     int sock = 0;
@@ -45,7 +44,7 @@ int main() {
     memset(&dest_addr, 0, sizeof(dest_addr));
     // Send it to container
     dest_addr.sin_family = AF_INET;
-    dest_addr.sin_addr.s_addr = inet_addr(DEST_IP);
+    dest_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     dest_addr.sin_port = htons(PORT_MQTT);
 
     // ACT ------

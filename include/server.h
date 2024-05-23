@@ -38,12 +38,4 @@ receiver(void *args);
 ///        to a more comprehensible one 
 /// @param onOrOff 
 /// @return 
-inline
-char* createTeamStr(int onOrOff) 
-{
-    char* state = "off";
-    if (onOrOff) state = "on";
-    
-    char* teamStr; asprintf(&teamStr,"4:%s", state);
-    return teamStr;
-}
+char* createTeamStr(int onOrOff);

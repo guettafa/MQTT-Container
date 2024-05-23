@@ -18,8 +18,6 @@ void on_message(struct mosquitto *mosq, void *userdata, const struct mosquitto_m
     }
 }
 
-
-
 int main() {
     struct mosquitto *mosq = NULL;
     int rc;
@@ -41,7 +39,6 @@ int main() {
 
     mosquitto_connect_callback_set(mosq, on_connect);
     mosquitto_message_callback_set(mosq, on_message);
-
 
     rc = mosquitto_connect(mosq, MQTT_BROKER_HOST, PORT_MQTT, 60);
     if (rc != MOSQ_ERR_SUCCESS) {
