@@ -29,6 +29,8 @@ void on_connect(struct mosquitto *g_mosq, void *userdata, int result) {
 }
 
 void on_message(struct mosquitto *g_mosq, void *userdata, const struct mosquitto_message *message) {
+
+    char* onOffToNum = reConvertTo10((char*) message->payload);
     send(socket_dist, (char*) message->payload, strlen((char*) message->payload), 0);
     printf("Message: (%s) %s\n",message->topic, (char *)message->payload);
 }
@@ -69,8 +71,8 @@ int main(void) {
     mosquitto_lib_init();
     g_mosq = mosquitto_new(NULL, true, NULL);
 
-    // mosquitto_username_pw_set(g_mosq,"minux","0407");
-    // mosquitto_tls_set(g_mosq,ca,NULL,cert,key,NULL);
+    mosquitto_username_pw_set(g_mosq,"minux","0407");
+    mosquitto_tls_set(g_mosq,ca,NULL,cert,key,NULL);
 
     if (!g_mosq) {
         fprintf(stderr, "Erreur: création de l'instance mosquitto.\n");
@@ -80,7 +82,7 @@ int main(void) {
     mosquitto_connect_callback_set(g_mosq, on_connect);
     mosquitto_message_callback_set(g_mosq, on_message);
 
-    rc = mosquitto_connect(g_mosq, LOCALHOST, PORT_MQTT, 60);
+    rc = mosquitto_connect(g_mosq, MQTT_BROKER_HOST, PORT_MQTT, 60);
     if (rc != MOSQ_ERR_SUCCESS) {
         fprintf(stderr, "Connexion impossible au broker: %s\n", mosquitto_strerror(rc));
         return 1;

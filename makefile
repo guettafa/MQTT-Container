@@ -4,14 +4,16 @@ F_SERVER=./src/server.c
 L_MOSQUITTO=-lmosquitto
 L_THREAD=-lpthread
 
-CC=gcc -std=gnu99
+CC=-std=gnu99
 
-COMPILE=$(CC) -I ./include
+GNU_SOURCE=D_GNU_SOURCE
+
+COMPILE=gcc $(CC) -I ./include
 
 all: release
 
 release:
-	$(COMPILE) $(F_MAIN) $(F_SERVER) -o build/release  $(L_MOSQUITTO)
+	$(COMPILE) $(F_MAIN) $(F_SERVER) $(L_THREAD) $(L_MOSQUITTO) -o build/release
 
 debug:
 	$(COMPILE) -g $(F_MAIN) $(F_SERVER) -o build/debug  $(L_MOSQUITTO)

@@ -17,7 +17,7 @@
 
 // PORT
 #define PORT_TCP 2002
-#define PORT_MQTT 1883
+#define PORT_MQTT 8883
 
 // IP ADDRESS
 #define DEST_IP "mqttbroker.lan"
@@ -43,7 +43,15 @@ receiver();
 
 /// @brief Transform the received button state from the pi 
 ///        to a more comprehensible one 
-/// @param onOrOff 
-/// @return 
+/// @param onOrOff if the button has been pressed under format ( 0 - not pressed / 1 - pressed)
+/// @return the team string that the broker will receive / Ex: 4:on or 4:off
 extern char*
 createTeamStr(int onOrOff);
+
+
+/// @brief Transform the "on" or off string receive from the broker
+///        to a 1 if on and 0 if off
+/// @param onOff The "on" or "off" string
+/// @return the team string the PI will receive / Example : 4:1 or 4:0
+extern char* 
+reConvertTo10(char* onOff);

@@ -9,4 +9,5 @@ char* createTeamStr(int onOrOff)
     return teamStr;
 }
 
+char* reConvertTo10(char* onOff) {return !strcmp(onOff, "on") ? "4:1\n" : "4:0\n";}
 
