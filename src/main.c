@@ -31,8 +31,8 @@ void on_connect(struct mosquitto *g_mosq, void *userdata, int result) {
 void on_message(struct mosquitto *g_mosq, void *userdata, const struct mosquitto_message *message) {
 
     char* onOffToNum = reConvertTo10((char*) message->payload);
-    send(socket_dist, (char*) message->payload, strlen((char*) message->payload), 0);
-    printf("Message: (%s) %s\n",message->topic, (char *)message->payload);
+    send(socket_dist, onOffToNum, strlen(onOffToNum), 0);
+    printf("Message: (%s) %s\n",message->topic, onOffToNum);
 }
 
 int main(void) {

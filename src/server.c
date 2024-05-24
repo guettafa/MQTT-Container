@@ -1,5 +1,7 @@
 #include "server.h"
 
+char* checkState(char* state) {return !strcmp(state, "on") ? "1" : "0";}
+
 char* createTeamStr(int onOrOff) 
 {
     char* state = "off";
@@ -9,5 +11,17 @@ char* createTeamStr(int onOrOff)
     return teamStr;
 }
 
-char* reConvertTo10(char* onOff) {return !strcmp(onOff, "on") ? "4:1\n" : "4:0\n";}
+char* reConvertTo10(char* onOff) 
+{
+    char *separated, *fullResult;
+    separated = strtok(onOff, ":");
+    
+    char* teamNum = separated;
+    separated = strtok(NULL, ":");
+
+    char* state = separated;
+
+    asprintf(&fullResult, "%s:%s", teamNum, checkState(state));
+    return fullResult;
+}
 

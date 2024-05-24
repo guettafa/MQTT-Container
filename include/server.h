@@ -37,7 +37,7 @@
 ///        the received message from the pi to the given struct
 /// @param args ReceiverStruct instance
 /// @return nothing
-extern void *
+extern void*
 receiver();
 
 
@@ -55,3 +55,10 @@ createTeamStr(int onOrOff);
 /// @return the team string the PI will receive / Example : 4:1 or 4:0
 extern char* 
 reConvertTo10(char* onOff);
+
+
+/// @brief Take the state on or off and tranform it to 1 or 0 
+/// @param state "on" or "off" 
+/// @return if "on", return 1 else return 0
+extern char* 
+checkState(char* state);
