@@ -6,8 +6,6 @@ L_THREAD=-lpthread
 
 CC=-std=gnu99
 
-GNU_SOURCE=D_GNU_SOURCE
-
 COMPILE=gcc $(CC) -I ./include
 
 all: release

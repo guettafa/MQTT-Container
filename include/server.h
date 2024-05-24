@@ -20,7 +20,6 @@
 #define PORT_MQTT 8883
 
 // IP ADDRESS
-#define DEST_IP "mqttbroker.lan"
 #define MQTT_BROKER_HOST "mqttbroker.lan"
 #define LOCALHOST "127.0.0.1"
 
