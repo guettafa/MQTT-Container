@@ -32,9 +32,8 @@
 
 //  -----   FUNCTIONS    -----
 
-/// @brief Function used in thread for the receiver that store
-///        the received message from the pi to the given struct
-/// @param args ReceiverStruct instance
+/// @brief Function used in thread to receive message from TCP and publish it to the broker
+/// @param nothing
 /// @return nothing
 extern void*
 receiver();
