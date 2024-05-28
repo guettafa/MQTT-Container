@@ -1,6 +1,6 @@
 
 # Project Title
-This repo was made during my IDO programming course and it contains the code to receive a message from a pi and transmit it to an MQTT broker, change its format and re-send it to the pi.
+This repo was made during my IDO programming course and it contains the code to receive a message from a pi and transmit it to an MQTT broker, change its format and re-send it to the pi. (This repo is for the container part)
 
 ## Context 
 The pi is connected to a button + a LED 8x8 matrix and if this button is pressed, the number 1 is sent to a container that will publish to a broker and transform the format with a team number. The message is then retrieved from the broker and sent to the pi so the matrix will flash the led that correspond to the team number.
