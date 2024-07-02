@@ -1,5 +1,5 @@
 
-# Project Title
+# MQTT Container
 This repo was made during my IDO programming course and it contains the code to receive a message from a pi and transmit it to an MQTT broker, change its format and re-send it to the pi. (This repo is for the container part)
 
 ## Context 
